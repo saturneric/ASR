@@ -1,0 +1,76 @@
+<i-message id="message" />
+
+<i-row i-class="i-row-class-top">
+<i-tabs current="{{current}}" bindchange="handleChange">
+    <i-tab key="tab1" title="小周期任务"></i-tab>
+    <i-tab key="tab2" title="大周期计划"></i-tab>
+</i-tabs>
+</i-row>
+<view wx:if="{{current=='tab1'}}"> 
+    <view wx:if="{{taskid.length <= 0}}" class="empty-view">
+        <image src="http://static.codesdream.com/ap.png" class="empty-img"></image>
+    </view>
+    <block wx:for="{{taskid}}" wx:for-item="id" value="{{index}}" >
+        <i-row>
+            <i-panel  i-class="panel-row"  data-value="{{id}}" >
+                <view slot="content" data-value="{{id}}" >
+                    <i-row i-class="item-row">
+                        <i-cell 
+                            i-class="i-cell-padding" 
+                            title="{{taskDetail[index].description}}" >
+                        </i-cell>
+                    </i-row>
+                    <i-row>
+                    <i-col span="2" offset="1">
+                        <i-icon type="clock" size="28" color="#80848f" />
+                    </i-col>
+                    <i-col span="20" offset="1">
+                        <i-row i-class="desc-row">
+                            <text>开始时间：{{taskbeginlist[index]}}</text>
+                        </i-row>
+                        <i-row i-class="desc-row last-desc-row">
+                            <text>截止时间：{{taskddlist[index]}}</text>
+                        </i-row>
+                    </i-col>
+                    
+                    </i-row>
+                    
+                   
+                </view>
+            </i-panel>
+        </i-row>
+    </block>
+</view>
+<view wx:if = "{{current=='tab2'}}">
+    <view wx:if="{{planid.length <= 0}}" class="empty-view">
+        <image src="http://static.codesdream.com/ap.png" class="empty-img"></image>
+    </view>
+    <block wx:for="{{planid}}" wx:for-item="id" >
+        <i-row >
+            <i-panel  i-class="panel-row"  data-value="{{id}}" >
+                <view slot="content" data-value="{{id}}" >
+                 <i-row i-class="item-row">
+                        <i-cell 
+                            i-class="i-cell-padding" 
+                            title="{{planDetail[index].description}}" >
+                        </i-cell>
+                    </i-row>
+                    <i-row>
+                    <i-col span="2" offset="1">
+                        <i-icon type="clock" size="28" color="#80848f" />
+                    </i-col>
+                    <i-col span="20" offset="1">
+                        <i-row i-class="desc-row">
+                            <text>开始时间：{{planbeginlist[index]}}</text>
+                        </i-row>
+                        <i-row i-class="desc-row last-desc-row">
+                            <text>截止时间：{{planddlist[index]}}</text>
+                        </i-row>
+                    </i-col>
+                    </i-row>
+                </view>
+            </i-panel>
+        </i-row>
+    </block>
+</view>
+<i-spin size="large" fix wx:if="{{ loading }}"></i-spin>

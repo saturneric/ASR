@@ -1,0 +1,48 @@
+<!--pages/information/information.wxml-->
+<i-row i-class="info-row-class"> 
+    <i-col span="8" offset="0">
+        <image src="{{avatarUrl}}" class="tou"></image>
+    </i-col>
+    <i-col span="16" offset="0">
+    <i-cell i-class="name-row"> 
+        <i-icon type="mine_fill" size="32" color="#2d8cf0" /> 
+        <text class="info-name"> {{userInfo.nickName}}</text>
+    </i-cell>
+    <view class="divLine"></view>
+    <i-cell>
+        <i-row>
+            <i-icon type="flashlight_fill" size="32" color="#19be6b" />
+            <text class="info-title">{{starDescription}}</text>
+        </i-row>
+        <i-row>
+            <i-col offset="2" span="24">
+            <i-rate bind:change="onChange1" value="{{star}}" disabled></i-rate>
+            </i-col>
+        </i-row>
+    </i-cell>
+    </i-col>
+    <i-spin size="large" fix wx:if="{{ loading }}"></i-spin>
+</i-row>
+
+<view class="page">
+    <view class="page__bd">
+        <mp-cells link hover title="功能设置">
+             <mp-cell link hover value="设置小周期忙碌时间" footer="" bindtap="goSetting" ext-class="menu">
+            </mp-cell>
+            <mp-cell link hover value="上个小周期执行统计" footer="" bindtap="goGraph" ext-class="menu"></mp-cell>
+            <mp-cell link hover value="通知提醒" footer="" ext-class="menu"></mp-cell>
+        </mp-cells>
+
+        <mp-cells title="关于">
+            <mp-cell link hover value="提个建议" bindtap="goSubmit" ext-class="menu">
+            </mp-cell>
+            <mp-cell link hover value="使用帮助" bindtap="goHelp" ext-class="menu">
+            </mp-cell>
+            <mp-cell link hover value="关于团队" bindtap="goAbout" ext-class="menu">
+            </mp-cell>
+        </mp-cells>
+
+    </view>
+</view>
+
+

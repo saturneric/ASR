@@ -1,0 +1,31 @@
+<!--pages/create/create.wxml-->
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+
+<i-panel title="基本信息">
+    <i-input  title="计划的描述" autofocus placeholder="背四级单词" maxlength="32" bind:blur="bindDescriptionBlur" />
+    <i-input  type="number" title="预期次数" placeholder="12次" maxlength="12" bindblur="bindDurationBlur"/>
+    <i-input  type="digit" title="单次时间" placeholder="0.5小时为最小分度" maxlength="12" bindblur="bindSingleMinBlur"/>
+    <i-input  type="number" title="两次间隔时间" placeholder="天" maxlength="12" bindblur="bindMutexPeriodBlur"/>
+</i-panel>
+
+<i-panel title="重要性">
+    <i-radio-group current="{{current}}" bindchange="handleImportantChange">
+        <i-radio wx:for="{{importance}}" position="{{position}}" value="{{item.name}}">
+        </i-radio>
+    </i-radio-group>
+</i-panel>
+
+<i-panel title="截止日期"  >
+        <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+            <i-cell title="当前选择" value="{{ddl_time}}" ></i-cell>
+        </picker>
+</i-panel>
+
+<i-panel title="时间偏好">
+    <i-radio-group current="{{pt_current}}" bindchange="handlePrefChange">
+        <i-radio wx:for="{{prefer_time}}" position="{{position}}" value="{{item.name}}">
+        </i-radio>
+    </i-radio-group>
+</i-panel>
+
+<i-button bind:click="surebutton" type="success" shape="circle">创建并自动安排</i-button>

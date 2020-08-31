@@ -1,0 +1,15 @@
+{
+  "component": true,
+  "usingComponents": {
+    "i-input": "../../../dist/input/index",
+    "i-panel": "../../../dist/panel/index",
+    "i-radio-group": "../../../dist/radio-group/index",
+    "i-radio": "../../../dist/radio/index",
+    "i-row": "../../../dist/row/index",
+    "i-col": "../../../dist/col/index",
+    "i-cell-group": "../../../dist/cell-group/index",
+    "i-cell": "../../../dist/cell/index",
+    "i-button": "../../../dist/button/index",
+    "mp-toptips": "weui-miniprogram/toptips/toptips"
+  }
+}

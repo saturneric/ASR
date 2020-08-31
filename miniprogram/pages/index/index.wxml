@@ -1,0 +1,356 @@
+<!--index.wxml-->
+<i-message id="message" />
+
+<i-row i-class="row-card">
+    <i-col span="24" offset="0" i-class="col-class">
+        <view wx:if="{{nowTimestamp >= taskToday.beginTimestamp[0] && todayNULL==false}}">
+            <i-card title="" extra="当前小周期任务">
+                <view slot="content">
+                    <i-row i-class="row-class-near">时间块进度</i-row>
+                    <i-row i-class="row-class">
+                        <i-progress percent="{{(1-(taskToday.endTimestamp[0]-nowTimestamp)/(taskToday.endTimestamp[0]-taskToday.beginTimestamp[0]))*100 | Int}}" status="active"></i-progress>
+                    </i-row>
+                    <i-row i-class="row-class">
+                        <i-col span="12">
+                            <i-row i-class="row-class-near">
+                                <text>类型</text>
+                            </i-row>
+                            <i-row>
+                                <i-icon type="activity" size="32" color="#80848f" />
+                                任务
+                            </i-row>
+                        </i-col>
+                        <i-col span="12">
+                            <i-row i-class="row-class-near">
+                                <text>重要性</text>
+                            </i-row>
+                            <i-row>
+                                <view wx:if="{{taskToday.Detail[0].importantDegree-1 == 0}}">   
+                                    <i-icon type="flag_fill" size="32" color="#ed3f14"/>
+                                </view> 
+                                <view wx:elif="{{taskToday.Detail[0].importantDegree-1 == 1}}">   
+                                    <i-icon type="flag_fill" size="32" color="#19be6b"/>
+                                </view> 
+                                <view wx:elif="{{taskToday.Detail[0].importantDegree-1 == 2}}">   
+                                    <i-icon type="flag" size="32"/>
+                                </view> 
+                                {{importance[taskToday.Detail[0].importantDegree-1]}}
+                            </i-row>
+                        </i-col>
+                    </i-row>
+                    <i-row i-class="row-class">
+                        <i-row i-class="row-class-near">
+                            任务标题
+                        </i-row>
+                        <i-row i-class="tp-title row-class-near">
+                            {{taskToday.Detail[[0]].description}}
+                        </i-row>
+                        <view class="divLine"></view>
+                    </i-row>
+
+                    <i-row>
+                        <i-col offset="0" span="8">
+                            <view class="view-wrap">
+                                <text class="type-title">截止时间</text>
+                                <view>{{deadline[0]}}</view>
+                            </view>
+                        </i-col>
+                        <i-col offset="8" span="8">
+                            <i-button bind:click="handleClick" type="{{button}}" size="small" shape="circle">
+                            <i-icon type="right" size="32" color="#f8f8f9" />
+                            </i-button>
+                        </i-col>
+                    </i-row>
+                </view>
+                <view slot="footer">当前</view>
+            </i-card>
+        </view> 
+        <view wx:elif="{{nowTimestamp >= planToday.beginTimestamp[0] && todayPNULL==false}}">
+            <i-card title="" extra="当前大周期计划">
+                <view slot="content">
+                    <i-row i-class="row-class-near">时间块进度</i-row>
+                    <i-row i-class="row-class">
+                        <i-progress percent="{{(1-(planToday.endTimestamp[0]-nowTimestamp)/(planToday.endTimestamp[0]-planToday.beginTimestamp[0]))*100 |Int}}" status="active"></i-progress>
+                    </i-row>
+                    <i-row i-class="row-class">
+                        <i-col span="12">
+                            <i-row i-class="row-class-near">
+                                <text>类型</text>
+                            </i-row>
+                            <i-row>
+                                <i-icon type="activity" size="32" color="#80848f" />
+                                计划
+                            </i-row>
+                        </i-col>
+                        <i-col span="12">
+                            <i-row i-class="row-class-near">
+                                <text>重要性</text>
+                            </i-row>
+                            <i-row>
+                                <view wx:if="{{planToday.Detail[0].importantDegree-1 == 0}}">   
+                                    <i-icon type="flag_fill" size="32" color="#ed3f14"/>
+                                </view> 
+                                <view wx:elif="{{planToday.Detail[0].importantDegree-1 == 1}}">   
+                                    <i-icon type="flag_fill" size="32" color="#19be6b"/>
+                                </view> 
+                                <view wx:elif="{{planToday.Detail[0].importantDegree-1 == 2}}">   
+                                    <i-icon type="flag" size="32"/>
+                                </view> 
+                                {{importance[planToday.Detail[0].importantDegree-1]}}
+                            </i-row>
+                        </i-col>
+                    </i-row>
+                    <i-row i-class="row-class">
+                        <i-row i-class="row-class-near">
+                            计划标题
+                        </i-row>
+                        <i-row i-class="tp-title row-class-near">
+                            {{planToday.Detail.description}}
+                        </i-row>
+                        <view class="divLine"></view>
+                    </i-row>
+
+                    <i-row>
+                        <i-col offset="0" span="8">
+                            <view class="view-wrap">
+                                <text class="type-title">截止时间</text>
+                                <view>{{deadline_P}}</view>
+                            </view>
+                        </i-col>
+                        <i-col offset="8" span="8">
+                            <i-button bind:click="handleClickP" type="{{button}}" size="small" shape="circle">
+                            <i-icon type="right" size="32" color="#f8f8f9" />
+                            </i-button>
+                        </i-col>
+                    </i-row>
+                </view>
+                <view slot="footer">当前</view>
+            </i-card>
+        </view>   
+        <view wx:else>
+            <i-row  i-class="row-card">
+                <i-card title="" extra="当前规划">
+                    <view slot="content">
+                    <i-row i-class="no-alloc-row">
+
+                        <i-spin size="large" fix wx:if="{{ true }}" custom>
+                            <i-icon type="emoji" size="55" color="#80848f" />
+                            <i-row class="no-alloc-desc">
+                                <text>当前时间块无任务安排</text>
+                            </i-row>
+                        </i-spin>
+                        
+                    </i-row>
+                    </view>
+                </i-card>
+            </i-row>
+        </view> 
+    </i-col>
+</i-row>
+
+<i-load-more i-class="load-more" tip="以下是近期时间规划" loading="{{ false }}" />
+
+<block wx:for="{{taskToday.id}}" wx:for-item="id"  value="{{index}}" >
+    <view wx:if="{{todayNULL ==false && nowTimestamp < taskToday.beginTimestamp[0]}}">
+        <i-row i-class="row-card">
+            <i-card title="" extra="最近的小周期任务">
+                    <view slot="content">
+                        <i-row i-class="row-class">
+                            <i-col span="12">
+                                <i-row i-class="row-class-near">
+                                    <text>类型</text>
+                                </i-row>
+                                <i-row>
+                                    <i-icon type="activity" size="32" color="#80848f" />
+                                    任务
+                                </i-row>
+                            </i-col>
+                            <i-col span="12">
+                                <i-row i-class="row-class-near">
+                                    <text>重要性</text>
+                                </i-row>
+                                <i-row>
+                                    <view wx:if="{{taskToday.Detail[index].importantDegree-1 == 0}}">   
+                                        <i-icon type="flag_fill" size="32" color="#ed3f14"/>
+                                    </view> 
+                                    <view wx:elif="{{taskToday.Detail[index].importantDegree-1 == 1}}">   
+                                        <i-icon type="flag_fill" size="32" color="#19be6b"/>
+                                    </view> 
+                                    <view wx:elif="{{taskToday.Detail[index].importantDegree-1 == 2}}">   
+                                        <i-icon type="flag" size="32"/>
+                                    </view> 
+                                    {{importance[taskToday.Detail[index].importantDegree-1]}}
+                                </i-row>
+                            </i-col>
+                        </i-row>
+                        <i-row i-class="row-class"> 
+                            <i-row i-class="row-class-near">
+                                任务标题
+                            </i-row>
+                            <i-row i-class="tp-title row-class-near">
+                                {{taskToday.Detail[index].description}}
+                            </i-row>
+                            <view class="divLine"></view>
+                        </i-row>
+                    </view>
+                    <view slot="footer">开始时间 {{beginline[index]}}</view>
+            </i-card>  
+        </i-row>
+    </view>
+</block>
+
+<!-- <block wx:for="{{taskToday.id}}" wx:for-item="id"  value="{{index}}" >
+    <i-row i-class="row-card">
+        <view wx:if="{{ todayNULL ==false && nowTimestamp > taskToday.beginTimestamp[0]}}">
+            <view wx:if="{{index>0}}">
+                <i-card title="" extra="最近任务安排">
+                        <view slot="content">
+                            <i-row i-class="row-class">
+                                <i-col span="12">
+                                    <i-row i-class="row-class-near">
+                                        <text>类型</text>
+                                    </i-row>
+                                    <i-row>
+                                        <i-icon type="activity" size="32" color="#80848f" />
+                                        任务
+                                    </i-row>
+                                </i-col>
+                                <i-col span="12">
+                                    <i-row i-class="row-class-near">
+                                        <text>重要性</text>
+                                    </i-row>
+                                    <i-row>
+                                        <view wx:if="{{taskToday.Detail[index].importantDegree-1 == 0}}">   
+                                            <i-icon type="flag_fill" size="32" color="#ed3f14"/>
+                                        </view> 
+                                        <view wx:elif="{{taskToday.Detail[index].importantDegree-1 == 1}}">   
+                                            <i-icon type="flag_fill" size="32" color="#19be6b"/>
+                                        </view> 
+                                        <view wx:elif="{{taskToday.Detail[index].importantDegree-1 == 2}}">   
+                                            <i-icon type="flag" size="32"/>
+                                        </view> 
+                                        {{importance[taskToday.Detail[index].importantDegree-1]}}
+                                    </i-row>
+                                </i-col>
+                            </i-row>
+                            <i-row i-class="row-class"> 
+                                    <i-row i-class="row-class-near">
+                                        任务标题
+                                    </i-row>
+                                    <i-row i-class="tp-title row-class-near">
+                                        {{taskToday.Detail[index].description}}
+                                    </i-row>
+                                    <view class="divLine"></view>
+                            </i-row>
+                        </view>
+                        <view slot="footer">开始时间 {{beginline[index]}}</view>
+                </i-card> 
+            </view> 
+        </view>
+    </i-row>
+</block>  -->
+<block wx:for="{{planToday.id}}" wx:for-item="id"  value="{{index}}" >
+    <i-row i-class="row-card">
+        <view wx:if="{{todayPNULL ==false && nowTimestamp < planToday.beginTimestamp[0]}}">
+            <i-card title="" extra="最近大周期计划">
+                    <view slot="content">
+                        <i-row i-class="row-class">
+                            <i-col span="12">
+                                <i-row i-class="row-class-near">
+                                    <text>类型</text>
+                                </i-row>
+                                <i-row>
+                                    <i-icon type="activity" size="32" color="#80848f" />
+                                    计划
+                                </i-row>
+                            </i-col>
+                            <i-col span="12">
+                                <i-row i-class="row-class-near">
+                                    <text>重要性</text>
+                                </i-row>
+                                <i-row>
+                                    <view wx:if="{{planToday.Detail[index].importantDegree-1 == 0}}">   
+                                        <i-icon type="flag_fill" size="32" color="#ed3f14"/>
+                                    </view> 
+                                    <view wx:elif="{{planToday.Detail[index].importantDegree-1 == 1}}">   
+                                        <i-icon type="flag_fill" size="32" color="#19be6b"/>
+                                    </view> 
+                                    <view wx:elif="{{planToday.Detail[index].importantDegree-1 == 2}}">   
+                                        <i-icon type="flag" size="32"/>
+                                    </view> 
+                                    {{importance[planToday.Detail[index].importantDegree-1]}}
+                                </i-row>
+                            </i-col>
+                        </i-row>
+                        <i-row i-class="row-class"> 
+                                <i-row i-class="row-class-near">
+                                    计划标题
+                                </i-row>
+                                <i-row i-class="tp-title row-class-near">
+                                    {{planToday.Detail[index].description}}
+                                </i-row>
+                                <view class="divLine"></view>
+                        </i-row>
+                    </view>
+                    <view slot="footer">开始时间 {{beginline_P[index]}}</view>
+            </i-card>  
+         
+        </view>
+    </i-row>
+</block>
+<!-- <block wx:for="{{planToday.id}}" wx:for-item="id"  value="{{index}}" >
+    <i-row i-class="row-card">
+        <view wx:if="{{ todayPNULL ==false && nowTimestamp > planToday.beginTimestamp[0]}}">
+            <view wx:if="{{index>0}}">
+                <i-card title="" extra="最近计划安排">
+                        <view slot="content">
+                            <i-row i-class="row-class">
+                                <i-col span="12">
+                                    <i-row i-class="row-class-near">
+                                        <text>类型</text>
+                                    </i-row>
+                                    <i-row>
+                                        <i-icon type="activity" size="32" color="#80848f" />
+                                        计划
+                                    </i-row>
+                                </i-col>
+                                <i-col span="12">
+                                    <i-row i-class="row-class-near">
+                                        <text>重要性</text>
+                                    </i-row>
+                                    <i-row>
+                                        <view wx:if="{{planToday.Detail[index].importantDegree-1 == 0}}">   
+                                            <i-icon type="flag_fill" size="32" color="#ed3f14"/>
+                                        </view> 
+                                        <view wx:elif="{{planToday.Detail[index].importantDegree-1 == 1}}">   
+                                            <i-icon type="flag_fill" size="32" color="#19be6b"/>
+                                        </view> 
+                                        <view wx:elif="{{planToday.Detail[index].importantDegree-1 == 2}}">   
+                                            <i-icon type="flag" size="32"/>
+                                        </view> 
+                                        {{importance[planToday.Detail[index].importantDegree-1]}}
+                                    </i-row>
+                                </i-col>
+                            </i-row>
+                            <i-row i-class="row-class"> 
+                                    <i-row i-class="row-class-near">
+                                        计划标题
+                                    </i-row>
+                                    <i-row i-class="tp-title row-class-near">
+                                        {{planToday.Detail[index].description}}
+                                    </i-row>
+                                    <view class="divLine"></view>
+                            </i-row>
+                        </view>
+                        <view slot="footer">开始时间 {{beginline_P[index]}}</view>
+                </i-card> 
+            </view> 
+        </view>
+    </i-row>
+</block>  -->
+
+<i-load-more i-class="load-more" tip="今天就这么多啦" loading="{{ false }}" />
+
+<view catchtouchmove="noneLoading"> 
+  <i-spin size="large" fix wx:if="{{ loading }}" ></i-spin> 
+</view>

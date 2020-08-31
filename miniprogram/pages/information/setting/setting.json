@@ -1,0 +1,20 @@
+{
+  "component": true,
+  "usingComponents": {
+    "i-row": "../../../dist/row/index",
+    "i-col": "../../../dist/col/index",
+    "i-card": "../../../dist/card/index",
+    "i-progress": "../../../dist/progress/index",
+    "i-grid": "../../../dist/grid/index",
+    "i-grid-item": "../../../dist/grid-item/index",
+    "i-grid-icon": "../../../dist/grid-icon/index",
+    "i-grid-label": "../../../dist/grid-label/index",
+    "i-count-down": "../../../dist/count-down/index",
+    "i-button": "../../../dist/button/index",
+    "i-icon": "../../../dist/icon/index",
+    "i-avatar": "../../../dist/avatar/index",
+    "i-tabs": "../../../dist/tabs/index",
+    "i-tab": "../../../dist/tab/index",
+    "i-swipeout": "../../../dist/swipeout/index"
+  }
+}

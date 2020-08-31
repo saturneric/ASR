@@ -1,0 +1,18 @@
+<!--miniprogram/pages/information/graph/graph.wxml-->
+<i-panel title="完成度概览" i-class="row-view finished-row">
+  <i-col span="8">
+  <canvas canvas-id="canvasAllFinishedRate" id="canvasColumn" class="charts" ></canvas>
+  </i-col>
+  <i-col span="8">
+  <canvas canvas-id="canvasTaskFinishedRate" id="canvasColumn" class="charts"></canvas>
+  </i-col>
+  <i-col span="8">
+  <canvas canvas-id="canvasPlanFinishedRate" id="canvasColumn" class="charts"></canvas>
+  </i-col>
+</i-panel>
+<i-panel title="任务完成度情况" i-class="row-view">
+    <canvas canvas-id="funnelFinished" id="canvasLineA" class="charts" ></canvas>
+</i-panel>
+<i-panel title="时间块完成数量" i-class="row-view numbered-row">
+    <canvas canvas-id="columnNumbered" id="canvasLineA" class="charts"></canvas>
+</i-panel>

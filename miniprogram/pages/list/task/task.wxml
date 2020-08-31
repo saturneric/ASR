@@ -1,0 +1,85 @@
+<!--index.wxml-->
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+
+<i-row>
+    <i-panel title="基本信息">
+        <i-cell bindtap="modalinput1" title="任务描述" value="{{description}} "></i-cell>
+            <modal hidden="{{hiddenmodalput1}}" title="请输入修改内容" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">  
+                <i-input title='任务的描述' bindblur="bindDescriptionBlur" maxlength="32" auto-focus/>  
+            </modal>  
+        <i-cell bindtap="modalinput2" title="截止时间" value="{{year[y]}}-{{month[m]}}-{{day[d]}} {{hour[h]}}:{{mniute[mn]}}"></i-cell>
+            <modal hidden="{{hiddenmodalput2}}"  confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">
+            <view class="center-view">
+                <picker bindchange="bindYearBlur" value="{{y}}" range="{{year}}">
+                    <view class="weui-input">[ {{year[y]}} ] 年 </view>
+                </picker> 
+                <picker bindchange="bindMonthBlur" value="{{m}}" range="{{month}}">
+                    <view class="weui-input">[ {{month[m]}} ] 月</view>
+                </picker>
+                <picker bindchange="bindDayBlur" value="{{d}}" range="{{day}}">
+                    <view class="weui-input">[ {{day[d]}} ] 日</view>
+                </picker>
+                <picker bindchange="bindHourBlur" value="{{h}}" range="{{hour}}">
+                    <view class="weui-input">[ {{hour[h]}} ] 时</view>
+                </picker>  
+                <picker bindchange="bindMniuteBlur" value="{{mn}}" range="{{mniute}}">
+                    <view class="weui-input">[ {{mniute[mn]}} ] 分</view>
+                </picker>
+            </view>
+            </modal>
+        <i-cell bindtap="modalinput4" title="单次最短时间" value="{{singleMin}} 小时"></i-cell>
+        <i-cell bindtap="modalinput4" title="单次最长时间" value="{{singleMax}} 小时"></i-cell>
+            <modal hidden="{{hiddenmodalput4}}" title="请输入修改内容" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">  
+                 <i-input  title="单次最短时间（小时）"  type="number" placeholder="1.5" maxlength="32" bind:blur="bindSingleMinBlur" autofocus/>
+
+                 <i-input  title="单次最长时间（小时）" type="number" placeholder="1.5" maxlength="32" bind:blur="bindSingleMaxBlur" />
+            </modal> 
+        <i-cell bindtap="modalinput5" title="任务总时长" value="{{duration}} 小时"></i-cell>
+            <modal hidden="{{hiddenmodalput5}}" title="请输入修改内容" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">  
+                 <i-input  title="预计花费时长（小时）" type="number"  placeholder="4.5" maxlength="32" bind:blur="bindDurationBlur" autofocus/>
+            </modal> 
+        
+    </i-panel>
+    <i-panel title="偏好信息">
+        <i-grid bindtap="modalinput3">
+            <i-grid-item>
+                <i-grid-icon>
+                    <view wx:if="{{importantDegree == 0}}">   
+                        <i-icon type="flag_fill" size="32" color="#ed3f14"/>
+                    </view> 
+                    <view wx:elif="{{importantDegree == 1}}">   
+                        <i-icon type="flag_fill" size="32" color="#19be6b"/>
+                    </view> 
+                    <view wx:elif="{{importantDegree == 2}}">   
+                        <i-icon type="flag" size="32"/>
+                    </view> 
+                </i-grid-icon>
+                <i-grid-label>{{importance[importantDegree]}}</i-grid-label>
+            </i-grid-item>
+            <i-grid-item>
+                <i-grid-icon>
+                    <i-icon type="time_fill" size="32"/>
+                </i-grid-icon>
+                <i-grid-label>{{preference[pref_index]}}</i-grid-label>
+            </i-grid-item>
+        </i-grid>
+         <modal hidden="{{hiddenmodalput3}}" title="请输入修改内容" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">  
+            <i-cell title="重要程度">
+                <picker bindchange="bindImptChange" value="{{importantDegree}}" range="{{importance}}"> 
+                    <view class="weui-input">{{importance[importantDegree]}}</view>
+                </picker>
+            </i-cell>
+            <i-cell title="偏好时间">
+                <picker bindchange="bindPrefChange" value="{{pref_index}}" range="{{preference}}">
+                    <view class="weui-input">{{preference[pref_index]}}</view>
+                </picker>
+            </i-cell>
+        </modal> 
+    </i-panel>
+</i-row>
+<view wx:if="{{changed==true}}">
+<i-button bind:click="surebutton" type="success">确认修改</i-button>
+</view>
+<i-button bind:click="deletebutton" type="error">删除</i-button>
+
+

@@ -1,0 +1,29 @@
+<!--miniprogram/pages/information/about/about.wxml-->
+<i-row i-class="icon-row">
+  <view class="center-view">
+    <i-spin size="large" fix wx:if="{{ loading }}"></i-spin>
+    <image style="width: 90px; height: 90px; margin:10px;" mode="scaleToFill" bindload = "imgLoad"  src="http://static.codesdream.com/team.png"></image>
+  </view>
+</i-row>
+<i-row>
+  <view class="center-view">
+    <text class="title-row">码梦工坊</text>
+  </view>
+</i-row>
+<i-row>
+  <view class="center-view">
+    <text class="text-row">自动日程规划</text>
+  </view>
+</i-row>
+<i-row>
+  <view class="center-view">
+    <text class="version-row">Version </text>
+    <text class="text-row">1.2.1</text>
+  </view>
+</i-row>
+
+<i-row i-class="copyright-row">
+  <view class="center-view">
+    <text class="copyright-text">Copyright © 2020 码梦工坊. All rights reserved.</text>
+  </view>
+</i-row>

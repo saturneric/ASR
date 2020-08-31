@@ -1,0 +1,32 @@
+/* miniprogram/pages/information/graph/graph.wxss */
+
+page{
+  background-color: #F6F6F6;
+  background: url("http://static.codesdream.com/bk.png") no-repeat;
+  width: 100%;
+  background-size: 100% 100%;
+  background-attachment:fixed;
+}
+
+.center-view{
+  text-align: center;
+  justify-content: center;
+  
+}
+
+.finished-row{
+  height: 160px;
+}
+
+.numbered-row{
+  height: 300px;
+}
+
+.row-view{
+
+}
+
+.charts{
+  height: 200px;
+  width: 100%;
+}

@@ -1,0 +1,54 @@
+/* miniprogram/pages/information/about/about.wxss */
+
+page {
+  background: #F6F6F6;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: url("http://static.codesdream.com/bk.png") no-repeat;
+  width: 100%;
+  background-size: 100% 100%;
+  background-attachment:fixed;
+}
+
+.icon-row{
+  margin-top: 40%;
+}
+
+.title-row{
+  margin-top: 5px;
+  font-size: 26px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.text-row{
+  margin-top: 8px;
+  font-size: 17px;
+  text-decoration: underline;
+}
+.version-row{
+  margin-top: 8px;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.copyright-row{
+  position: fixed;
+  width: 100%;
+  height: 50rpx;
+  bottom:0px;
+  z-index: -1;
+}
+
+.copyright-text{
+  color: #80848f;
+  font-size: smaller;
+}
+
+.center-view{
+  margin-top: 0px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}

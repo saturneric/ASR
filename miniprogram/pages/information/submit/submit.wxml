@@ -1,0 +1,15 @@
+<i-panel title="基本信息">
+     <i-input value="{{userInfo.nickName}}" title="用户名称" disabled />
+    <i-input  title="称呼" autofocus placeholder="x同学"  maxlength="12" bind:blur="bindNickNameBlur"/>
+    <i-input  title="邮箱" placeholder="xxx@excample.com"  maxlength="32" bind:blur="bindEmailBlur"/>
+</i-panel>
+
+<i-panel title="主要内容">
+    <i-radio-group current="{{current}}" bindchange="handleComplainChange">
+        <i-radio wx:for="{{complain}}" position="left"  value="{{item.name}}">
+        </i-radio>
+    </i-radio-group>
+    <i-input value="{{ value4 }}" type="textarea" title="反馈内容" auto-height='true' placeholder="请输入简要的反馈内容(最多500字)" maxlength="500" bind:blur="bindTextBlur"/>
+</i-panel>
+
+<i-button bind:click="handleClick" type="success" shape="circle" bind:click="handleSubmit" i-class="button-row">提交反馈</i-button>

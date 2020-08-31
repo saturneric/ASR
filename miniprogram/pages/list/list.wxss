@@ -1,0 +1,140 @@
+/* pages/list/list.wxss */
+.row,.row2{
+  margin-top: 2px;
+  height :50px;
+  width: 95%;
+  margin-left:auto;
+  margin-right:auto;
+  background-color:white
+}
+page {
+  background: #F6F6F6;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: url("http://static.codesdream.com/bk.png") no-repeat;
+  width: 100%;
+  background-size: 100% 100%;
+  background-attachment:fixed;
+}
+
+.itm{
+  margin-left: 20px;
+  color: rgb(99, 98, 101);
+  font-style: initial;
+  
+}
+.row2{
+  background-color:rgb(221, 206, 255);
+}
+
+.blk0,.blk1{
+  border: 1px solid rgb(178, 139, 255);
+  width: 72px;
+  height:30px;
+  margin-left: 5px;
+  border-radius: 10px;
+  color: rgb(178, 139, 255);
+  text-align: center;
+}
+.blk1{
+  border: 1px solid rgb(178, 139, 255);
+  background-color: rgb(178, 139, 255);
+  color: white;
+  border-radius: 10px;
+
+}
+.row3{
+  display: flex;
+  flex-direction: row;
+  margin-top: 5px;
+}
+.i-cell-padding{
+  height: 28px;
+}
+
+.i-row-class{
+  margin-bottom:5px;
+}
+
+.circle-button{
+  font-size: 60rpx;
+  color: white;
+  text-align: center;
+  border-radius: 100%;
+}
+
+/* .circle-view1{
+    height: 120rpx;
+    width: 120rpx;
+    background-color: #19be6b;
+    border-radius: 100%;
+    position: fixed;
+    bottom: 100rpx;
+    right: 40rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9;
+    border: 0 solid #ffffff;
+    box-shadow: 4px 1px 1px #cccccc;
+} */
+
+.circle-view1{
+  position: fixed;
+  bottom: 100rpx;
+  right: 40rpx;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+}
+
+.button-img{
+  height: 60px;
+  width: 60px;
+}
+
+.circle-view2{
+  height: 120rpx;
+  width: 120rpx;
+  background-color: #1ea4ed;
+  border-radius: 100%;
+  position: fixed;
+  bottom: 100rpx;
+  right: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9;
+  border: 0 solid #ffffff;
+  box-shadow: 4px 1px 1px #cccccc;
+}
+
+.progress-cell{
+  height: 18px;
+}
+
+.i-cell-padding{
+  height: 20px;
+}
+
+.item-row{
+  height: 45px;
+}
+
+.empty-img{
+  height: 240px;
+  width: 150px;
+
+}
+
+.empty-view{
+  display:flex;
+  justify-content: center;
+  margin-top: 80px;
+  margin-left: 15px;
+}
+
+.i-row-class-top{
+  margin-top: 20px;
+}

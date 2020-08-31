@@ -1,0 +1,12 @@
+/* miniprogram/pages/information/submit/submit.wxss */
+
+page {
+  background: #F6F6F6;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.button-row{
+  margin-top: 40px;
+}

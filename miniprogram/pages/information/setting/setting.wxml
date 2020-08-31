@@ -1,0 +1,82 @@
+<view wx:if="{{current=='tab1'}}"> 
+    <view class="circle-view1" data-value="{{1}}" bindtap="modalinput">
+        <i-icon type="add" size="28" color="white" />
+    </view>
+</view>
+<view wx:if="{{current=='tab2'}}"> 
+    <view class="circle-view1" data-value="{{2}}" bindtap="modalinput">
+        <i-icon type="add" size="28" color="white" />
+    </view>
+</view>
+<view wx:if="{{current=='tab3'}}"> 
+    <view class="circle-view1" data-value="{{3}}" bindtap="modalinput">
+        <i-icon type="add" size="28" color="white" />
+    </view>
+</view>
+<view wx:if="{{current=='tab4'}}"> 
+    <view class="circle-view1" data-value="{{4}}" bindtap="modalinput">
+        <i-icon type="add" size="28" color="white" />
+    </view>
+</view>
+<view wx:if="{{current=='tab5'}}"> 
+    <view class="circle-view1" data-value="{{5}}" bindtap="modalinput">
+        <i-icon type="add" size="28" color="white" />
+    </view>
+</view>
+<view wx:if="{{current=='tab6'}}"> 
+    <view class="circle-view1" data-value="{{6}}" bindtap="modalinput">
+        <i-icon type="add" size="28" color="white" />
+    </view>
+</view>
+<view wx:if="{{current=='tab7'}}"> 
+    <view class="circle-view1" data-value="{{7}}" bindtap="modalinput">
+        <i-icon type="add" size="28" color="white" />
+    </view>
+</view>
+<modal hidden="{{hiddenmodalput}}" title="{{week[week_index]}}" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">  
+<view class="center-view">
+    <picker bindchange="bindBeginhourChange" value="{{beginhour_index}}" range="{{hour}}">
+        <view class="weui-input">[{{hour[beginhour_index]}}]时</view>
+    </picker> 
+    <picker bindchange="bindBeginminChange" value="{{beginmin_index}}" range="{{minute}}">
+        <view class="weui-input">[{{minute[beginmin_index]}}]分</view>
+    </picker>
+    <text>到</text>
+     <picker bindchange="bindEndhourChange" value="{{endhour_index}}" range="{{hour}}">
+        <view class="weui-input">[{{hour[endhour_index]}}]时</view>
+    </picker>
+    <picker bindchange="bindEndminChange" value="{{endmin_index}}" range="{{minute}}">
+        <view class="weui-input">[{{minute[endmin_index]}}]分</view>
+    </picker>  
+</view>
+</modal> 
+<i-tabs current="{{ current }}" bindchange="handleChange">
+    <i-tab key="tab1" title="周一"></i-tab>
+    <i-tab key="tab2" title="周二"></i-tab>
+    <i-tab key="tab3" title="周三"></i-tab>
+    <i-tab key="tab4" title="周四"></i-tab>
+    <i-tab key="tab5" title="周五"></i-tab>
+    <i-tab key="tab6" title="周六"></i-tab>
+    <i-tab key="tab7" title="周日"></i-tab>
+</i-tabs>
+
+ <i-row >
+ <block wx:for="{{FBTimeList[week_index]}}" wx:for-item="id" value="{{index}}" >
+    <i-swipeout i-class="i-swipeout-demo-item" actions="{{actions}}" data-value="{{index}}" bindchange="deleteTime">
+    <view slot="content">
+        <i-row>
+            <i-grid>
+                <i-grid-item i-class="item">
+                <i-icon type="time" size="24"/>
+                <text> 开始：{{(FBTimeList[week_index][index].startScale/2)|Int}}时{{(FBTimeList[week_index][index].startScale%2)*30}}分</text>
+                </i-grid-item>
+                <i-grid-item i-class="item">
+                <i-icon type="time" size="24"/>
+                <text> 结束：{{(FBTimeList[week_index][index].endScale/2)|Int}}时{{(FBTimeList[week_index][index].endScale%2*30)}}分</text>
+                </i-grid-item>
+            </i-grid>
+        </i-row>
+    </view>
+  </i-swipeout>
+</block> 
+</i-row>

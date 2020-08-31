@@ -1,0 +1,19 @@
+    <button class="button" bindtap='buttonPOST'>
+      <view class= "buttontext">POST</view>
+    </button>
+    
+    <button class="button" bindtap='buttonGET'>
+      <view class= "buttontext">GET</view>
+    </button>
+    <button class="button" bindtap='buttonGETALL'>
+      <view class= "buttontext">GETALL</view>
+    </button>
+    <button class="button" bindtap='buttonPATCH'>
+      <view class= "buttontext">PATCH</view>
+    </button>
+    <button class="button" bindtap='buttonDELETE'>
+      <view class= "buttontext">DELETE</view>
+    </button>
+ <button class="button" bindtap='buttonTODAY'>
+      <view class= "buttontext">TODAY</view>
+    </button>

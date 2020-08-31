@@ -1,0 +1,88 @@
+<i-message id="message" />
+
+<view wx:if="{{current=='tab1'}}"> 
+    <view class="circle-view1" bindtap="goCreateTask">
+        <image src="../../images/bt0.png" wx:if="{{!press}}" mode="widthFix" class="button-img"></image>
+    </view>
+</view>
+<view wx:if="{{current=='tab2'}}"> 
+    <view class="circle-view1" bindtap="goCreatePlan">
+        <image src="../../images/bt0-1.png" wx:if="{{!press}}" mode="widthFix" class="button-img"></image>
+    </view>
+</view>
+
+<i-row i-class="i-row-class-top">
+<i-tabs current="{{current}}" bindchange="handleChange">
+    <i-tab key="tab1" title="小周期任务"></i-tab>
+    <i-tab key="tab2" title="大周期计划"></i-tab>
+</i-tabs>
+</i-row>
+<view wx:if="{{current=='tab1'}}"> 
+    <view wx:if="{{taskid.length <= 0}}" class="empty-view">
+        <image src="http://static.codesdream.com/gu.png" class="empty-img"></image>
+    </view>
+    <block wx:for="{{taskid}}" wx:for-item="id" value="{{index}}" >
+        <i-row >
+            <i-swipeout  i-class="i-swipeout-demo-item" actions="{{actions}}" data-value="{{id}}" bindchange="deleteTask">
+                <view slot="content" data-value="{{id}}" bindtap="goTask" >
+                    <i-row i-class="item-row">
+                        <i-cell 
+                            i-class="i-cell-padding" 
+                            title="{{taskDetail[index].description}}" 
+                            label="截止日期 {{taskddlist[index]}}">
+                        </i-cell>
+                    </i-row>
+                    <i-row i-class="progress-cell">
+                        <view wx:if="{{allocstatus[index]}}">
+                            <i-col offset="15">
+                            <i-icon type="success_fill" size="24" color="#19be6b" />
+                                时间已规划
+                            </i-col>
+                        </view>
+                        <view wx:if="{{!allocstatus[index]}}">
+                            <i-col offset="15">
+                            <i-icon type="feedback_fill" size="24" color="#2d8cf0" />
+                                规划中
+                            </i-col>
+                        </view>
+                    </i-row>
+                </view>
+            </i-swipeout>
+        </i-row>
+    </block>
+</view>
+<view wx:if = "{{current=='tab2'}}">
+    <view wx:if="{{planid.length <= 0}}" class="empty-view">
+        <image src="http://static.codesdream.com/flag.png" class="empty-img"></image>
+    </view>
+    <block wx:for="{{planid}}" wx:for-item="id" >
+        <i-row >
+            <i-swipeout  i-class="i-swipeout-demo-item" actions="{{actions}}" data-value="{{id}}" bindchange="deletePlan">
+                <view slot="content" data-value="{{id}}" bindtap="goPlan">
+                    <i-row i-class="item-row">
+                        <i-cell 
+                            i-class="i-cell-padding" 
+                            title="{{planDetail[index].description}}" 
+                            label="截止日期 {{planddlist[index]}}">
+                        </i-cell>
+                    </i-row>
+                    <i-row i-class="progress-cell">
+                        <view wx:if="{{Pallocstatus[index]}}">
+                            <i-col offset="15">
+                            <i-icon type="success_fill" size="24" color="#19be6b" />
+                                时间已规划
+                            </i-col>
+                        </view>
+                        <view wx:if="{{!Pallocstatus[index]}}">
+                            <i-col offset="15">
+                            <i-icon type="feedback_fill" size="24" color="#80848f" />
+                                规划中
+                            </i-col>
+                        </view>
+                    </i-row>
+                </view>
+            </i-swipeout>
+        </i-row>
+    </block>
+</view>
+<i-spin size="large" fix wx:if="{{ loading }}"></i-spin>

@@ -1,0 +1,91 @@
+/* pages/information/setting/setting.wxss */
+.btn{
+  width:200px;
+}
+.btn-area{
+  display: flex;
+  flex-direction: row;
+}
+.box{
+  display: flex;
+  flex-direction: row;
+  width:100%;
+  height: auto;
+}
+.t2{
+  font-size: 10px;
+}
+.page-section{
+  margin-top:10px;
+}
+.page-section3{
+  margin-top:40px;
+}
+.c1{
+  
+  background-color: rgb(80, 80, 80);
+}
+
+.blk0,.blk1{
+  border: 1px solid rgb(127, 63, 255);
+  width: 72px;
+  height:40px;
+  margin-left: 5px;
+  border-radius: 10px;
+  color: rgb(127, 63, 255);
+  text-align: center;
+}
+.blk1{
+  border: 1px solid rgb(127, 63, 255);
+  background-color: rgb(127, 63, 255);
+  color: white;
+  border-radius: 10px;
+
+}
+.row3{
+  display: flex;
+  flex-direction: row;
+  margin-top: 5px;
+}
+page{
+  background-color: #F6F6F6;
+  background: url("http://static.codesdream.com/bk.png") no-repeat;
+  width: 100%;
+  background-size: 100% 100%;
+  background-attachment:fixed;
+}
+
+input[type=checkbox] {
+  zoom: 50%;
+}
+
+.circle-view1{
+  height: 120rpx;
+  width: 120rpx;
+  background-color: #19be6b;
+  border-radius: 100%;
+  position: fixed;
+  bottom: 100rpx;
+  right: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9;
+  border: 0 solid #ffffff;
+  box-shadow: 4px 1px 1px #cccccc;
+}
+
+.item-row{
+  height: 12px;
+}
+
+.item{
+  height: 56px;
+}
+
+.center-view{
+  margin-top: 0px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,59 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/init/init",
+    "pages/databaseTest/databaseTest",
+    "pages/information/information",
+    "pages/information/about/about",
+    "pages/information/submit/submit",
+    "pages/list/list",
+    "pages/information/setting/setting",
+    "pages/information/graph/graph",
+    "pages/alloc/alloc",
+    "pages/information/help/help"
+  ],
+  "useExtendedLib": {
+    "kbone": true,
+    "weui": true
+  },
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "\"措置有方\"",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#8a8a8a",
+    "selectedColor": "#7644df",
+    "borderStyle": "black",
+    "backgroundColor": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "近24小时",
+        "iconPath": "images/001.png",
+        "selectedIconPath": "images/001-2.png"
+      },
+      {
+        "pagePath": "pages/list/list",
+        "text": "要做的事情",
+        "iconPath": "images/002.png",
+        "selectedIconPath": "images/002-2.png"
+      },
+      {
+        "pagePath": "pages/alloc/alloc",
+        "text": "最优规划表",
+        "iconPath": "images/004-1.png",
+        "selectedIconPath": "images/004-2.png"
+      },
+      {
+        "pagePath": "pages/information/information",
+        "text": "关于我自己",
+        "iconPath": "images/003.png",
+        "selectedIconPath": "images/003-2.png"
+      }
+    ]
+  }
+}

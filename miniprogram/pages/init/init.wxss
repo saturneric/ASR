@@ -1,0 +1,27 @@
+/* miniprogram/pages/init/init.wxss */
+.btn{
+  position: absolute;
+  top: 500px;
+  right :20px;
+  width: 50px;
+  height: 30px;
+  background-color: white;
+}
+
+.down-img{
+  width: 20px;
+  height: 30px;
+}
+
+.down-row{
+  position: fixed;
+  bottom: 20px;
+  width: 100%;
+}
+
+.auth-button{
+  width: 70%;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  background-color: #19be6b;
+}

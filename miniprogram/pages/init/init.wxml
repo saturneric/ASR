@@ -1,0 +1,22 @@
+<i-row>
+<image src="http://static.codesdream.com/1.png" mode="widthFix" bindload = "imgLoad1"> </image>
+</i-row>
+
+<i-row>
+<image src="http://static.codesdream.com/2.png" mode="widthFix"> </image>
+</i-row>
+
+<i-row>
+<image src="http://static.codesdream.com/3.png" mode="widthFix"> </image>
+</i-row>
+<i-row i-class="down-row">
+<i-col span="2" offset="21">
+<image src="down.png" mode="widthFix" class="down-img"> </image>
+</i-col>
+</i-row>
+
+<button open-type='getUserInfo' bindgetuserinfo='getuserinfo' type='primary' class="auth-button">开启你的自动化高效生活</button>
+
+<view catchtouchmove="noneLoading"> 
+  <i-spin size="large" fix wx:if="{{ loading }}" ></i-spin> 
+</view>
